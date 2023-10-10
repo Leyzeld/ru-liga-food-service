@@ -14,9 +14,7 @@
 	<name>food-service</name>
 	<packaging>pom</packaging>
 	<description>Demo project for Spring Boot</description>
-	<properties>
-		<java.version>11</java.version>
-	</properties>
+
 	<modules>
 		<module>order-service</module>
 		<module>kitchen-service</module>
