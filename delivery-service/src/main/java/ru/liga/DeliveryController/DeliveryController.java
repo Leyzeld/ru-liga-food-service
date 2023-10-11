@@ -3,6 +3,7 @@ package ru.liga.DeliveryController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
+import ru.liga.Dto.Coordinates;
 import ru.liga.Dto.DeliveryDto;
 
 import java.util.ArrayList;
@@ -37,14 +38,17 @@ public class DeliveryController {
     public String update(@RequestParam Integer id,
                          @RequestParam String phone_number,
                          @RequestParam String status,
-                         @RequestParam Short coordinates) {
+                         @RequestParam Integer coordinate_X,
+                         @RequestParam Integer coordinate_Y) {
 
         if (id.equals(findById(id).getId())) {
             return "Курьер уже существует";
         }
 
         DeliveryDto newCurier = new DeliveryDto();
-        newCurier.setCoordinates(coordinates).
+        Coordinates newCoordinates = new Coordinates();
+        newCoordinates.setCoor_X(coordinate_X).setCoor_Y(coordinate_Y);
+        newCurier.setCoordinates(newCoordinates).
                 setStatus(status).
                 setPhone_number(phone_number).
                 setId(id);

@@ -5,12 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-@Schema(description = "Дто заказа")
+@Schema(description = "Дто доставки")
 @Data
 @Accessors(chain = true)
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class DeliveryDto {
     @Schema(description = "Ид курьера")
     private Integer id;
@@ -19,5 +16,5 @@ public class DeliveryDto {
     @Schema(description = "Статус")
     private String status;
     @Schema(description = "Координаты")
-    private Short coordinates;
+    private Coordinates coordinates;
 }
