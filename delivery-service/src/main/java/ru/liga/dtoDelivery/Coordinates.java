@@ -1,4 +1,4 @@
-package ru.liga.Dto;
+package ru.liga.dtoDelivery;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

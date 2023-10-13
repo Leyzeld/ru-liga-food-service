@@ -11,8 +11,6 @@
     </parent>
 
     <artifactId>delivery-service</artifactId>
-    <packaging>jar</packaging>
-    <name>delivery-service</name>
 
     <dependencies>
         <dependency>
