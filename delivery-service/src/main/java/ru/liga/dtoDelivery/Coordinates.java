@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Coordinates {
     @Schema(description = "Координата Х")
-    private Integer coor_X;
+    private Integer СoorX;
     @Schema(description = "Координата Y")
-    private Integer coor_Y;
+    private Integer СoorY;
 }

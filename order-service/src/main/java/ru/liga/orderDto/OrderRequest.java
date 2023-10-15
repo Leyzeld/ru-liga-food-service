@@ -14,5 +14,9 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderRequest {
     private Integer restaurantId;
-    private List<Item> itemList;
+    private List<MenuItems> menuItemsList;
+
+    public void addToList (MenuItems menuItems) {
+        menuItemsList.add(menuItems);
+    }
 }

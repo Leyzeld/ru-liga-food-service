@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderResponse {
-    private Long id;
+    private Integer id;
     private String secretPaymentUrl;
     private String deliveryInTime;
 }

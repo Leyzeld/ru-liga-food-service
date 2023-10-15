@@ -1,7 +1,9 @@
 package ru.liga.dtoDelivery;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
 @Schema(description = "Дто доставки")
 @Data
 @Accessors(chain = true)

@@ -2,43 +2,38 @@ package ru.liga.orderController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.liga.orderDto.Dto;
 import ru.liga.orderDto.OrderDto;
 import ru.liga.orderDto.OrderRequest;
 import ru.liga.orderDto.OrderResponse;
+import ru.liga.service.api.OrderService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
+
 
 @Tag(name = "API для заказов")
 @RestController
 @RequestMapping("/order")
+@RequiredArgsConstructor
 public class OrderController {
-    private Dto dto = new Dto();
+    private final OrderService orderService;
+
     @Operation(summary = "Показать все заказы")
     @GetMapping("/orders")
     public Dto orders() {
-        return dto;
+        return orderService.getAllDto();
     }
     @Operation(summary = "Показать заказ по ID")
     @GetMapping("/order/{id}")
-    public OrderDto getOrderById(@PathVariable("id") Integer id) {
-        if (dto.findById(id) == null) {
-            return null;
-        } else {
-            return dto.findById(id);
-        }
+    public Optional<OrderDto> getOrderById(@PathVariable("id") Integer id) {
+        return orderService.getDtoById(id);
     }
     @Operation(summary = "Добавить заказ по ID")
     @PostMapping("/order")
     public OrderResponse addNewOrder(@RequestBody OrderRequest newOrder) {
-        OrderDto tmp = new OrderDto();
-        tmp.setId(1);
-        tmp.setRestaurantId(newOrder.getRestaurantId());
-        tmp.setItems(newOrder.getItemList());
-        dto.addToList(tmp);
-        return new OrderResponse();
+        return orderService.makeOrder(newOrder);
     }
 
 }
