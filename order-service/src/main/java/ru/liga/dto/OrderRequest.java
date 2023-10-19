@@ -1,10 +1,9 @@
-package ru.liga.orderDto;
+package ru.liga.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.liga.itemDto.Item;
 
 import java.util.List;
 

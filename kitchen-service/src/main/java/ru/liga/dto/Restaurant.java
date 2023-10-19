@@ -1,6 +1,5 @@
-package ru.liga.restaurantDto;
+package ru.liga.dto;
 
-import io.swagger.v3.oas.models.security.SecurityScheme;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

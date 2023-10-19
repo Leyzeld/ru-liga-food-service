@@ -1,40 +1,45 @@
 package ru.liga.service;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
-import ru.liga.orderDto.Dto;
-import ru.liga.orderDto.OrderDto;
-import ru.liga.orderDto.OrderRequest;
-import ru.liga.orderDto.OrderResponse;
+import ru.liga.dto.Dto;
+import ru.liga.dto.OrderDto;
+import ru.liga.dto.OrderRequest;
+import ru.liga.dto.OrderResponse;
+import ru.liga.repository.api.OrderRepository;
 import ru.liga.service.api.OrderService;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
 @Data
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
-    private Dto dto = new Dto();
-
-    public OrderServiceImpl(){
-        dto = new Dto();
-        dto.setOrderDtoList(new ArrayList<>());
-    }
+    private OrderRepository orderRepository;
+    
     @Override
     public Dto getAllDto() {
+        Dto dto = new Dto();
+        //dto.setOrderDtoList(orderRepository.findAll());
         return dto;
     }
     @Override
     public Optional<OrderDto> getDtoById (Integer id) {
-        return dto.findById(id);
+        //return orderRepository.findById(id);
+        return Optional.empty();
     }
     @Override
     public OrderResponse makeOrder (OrderRequest request) {
         OrderDto orderDto = new OrderDto();
         orderDto.setId(request.getRestaurantId());
-        dto.addToList(orderDto);
+        //orderRepository.addToList(orderDto);
+        //orderRepository.save(orderDto);
         return new OrderResponse(1,"","");
     }
+
+
 
 }

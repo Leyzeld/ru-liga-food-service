@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ru.liga.batisMapper.BatisMapper">
+    <select
+            id="getOrderByStatus"
+            parameterType="java.lang.String"
+            resultMap="orderEntity">
+            select * from orders
+                where (1=1)
+            <if test="status != null" >
+                and status = #{status}
+            </if>
+    </select>
+    <select
+            id="getOrderById"
+            parameterType="java.lang.Integer"
+            resultMap="orderEntity">
+            select * from orders
+                where (1=1)
+            <if test="order_id != null" >
+                and order_id = #{id}
+            </if>
+    </select>
+    <update id="updateOrderStatus" parameterType="ru.liga.model.OrderEntity">
+        update orderEntity
+        <set>
+            <if test="status != null">
+                descr = #{status},
+            </if>
+        </set>
+        where order_id = #{id}
+    </update>
+
+    <resultMap id="orderEntity" type="ru.liga.model.OrderEntity">
+        <id property="id" column="order_id"/>
+        <result property="status" column="status"/>
+    </resultMap>
+</mapper>

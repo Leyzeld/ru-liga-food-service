@@ -9,6 +9,6 @@ create table if not exists restaurant
 );
 
 comment on table customer is 'Клиенты';
-comment on column restaurant.restaurant_id is 'Идентификатор ресторана';
+comment on column restaurant.restaurant_id is 'ID ресторана';
 comment on column restaurant.status is 'Статус';
 comment on column restaurant.address is 'Адрес';

@@ -2,9 +2,9 @@ create sequence if not exists order_item_seq;
 
 create table if not exists order_item
 (
-    order_item_id bigint not null default nextval ('order_item_seq'),
-    order_id bigint,
-    restaurant_menu_item_id bigint,
+    order_item_id integer not null default nextval ('order_item_seq'),
+    order_id integer,
+    restaurant_menu_item_id integer,
     price numeric(10,2),
     quantity integer not null,
     constraint order_item_pk primary key (order_item_id),
@@ -14,8 +14,8 @@ create table if not exists order_item
         references restaurant_menu_item (restaurant_menu_item_id)
 );
 
-comment on table order_item is 'Пункт заказа';
-comment on column order_item.order_item_id is 'Идентификатор пункт заказа';
+comment on table order_item is 'Продукт';
+comment on column order_item.order_item_id is 'ID продукта заказа';
 comment on column order_item.order_id is 'Заказ';
 comment on column order_item.restaurant_menu_item_id is 'Пункт меню';
 comment on column order_item.price is 'цена';

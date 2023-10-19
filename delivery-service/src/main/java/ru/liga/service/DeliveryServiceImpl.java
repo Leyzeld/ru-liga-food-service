@@ -2,12 +2,11 @@ package ru.liga.service;
 
 import lombok.Data;
 import org.springframework.stereotype.Service;
-import ru.liga.dtoDelivery.DeliveryDto;
+import ru.liga.dto.DeliveryDto;
 import ru.liga.service.api.DeliveryService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Data
@@ -21,7 +20,7 @@ public class DeliveryServiceImpl implements DeliveryService {
     @Override
     public DeliveryDto getCourierById(Integer id) {
         if (deliveryDtos.isEmpty()) {
-            return null;
+            throw new RuntimeException("Курьер с данным ID не найден");
         } else {
             return findById(id);
         }

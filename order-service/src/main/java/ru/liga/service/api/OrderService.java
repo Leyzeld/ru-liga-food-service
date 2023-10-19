@@ -1,10 +1,10 @@
 package ru.liga.service.api;
 
 
-import ru.liga.orderDto.Dto;
-import ru.liga.orderDto.OrderDto;
-import ru.liga.orderDto.OrderRequest;
-import ru.liga.orderDto.OrderResponse;
+import ru.liga.dto.Dto;
+import ru.liga.dto.OrderDto;
+import ru.liga.dto.OrderRequest;
+import ru.liga.dto.OrderResponse;
 
 import java.util.Optional;
 

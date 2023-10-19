@@ -6,7 +6,7 @@ create table if not exists orders
     customer_id integer,
     restaurant_id integer,
     status varchar(128),
-    courier_id bigint,
+    courier_id integer,
     timestamp timestamptz not null default now(),
     constraint order_pk primary key (order_id),
     constraint order_customer_fk foreign key (customer_id)
@@ -18,9 +18,9 @@ create table if not exists orders
 );
 
 comment on table orders is 'Заказ';
-comment on column orders.order_id is 'Идентификатор клиента';
+comment on column orders.order_id is 'ID клиента';
 comment on column orders.customer_id is 'Клиент';
 comment on column orders.restaurant_id is 'Ресторан';
 comment on column orders.status is 'Статус';
 comment on column orders.courier_id is 'Курьер';
-comment on column orders.timestamp is 'Время заказа';
+comment on column orders.timestamp is 'Примерное время доставки';

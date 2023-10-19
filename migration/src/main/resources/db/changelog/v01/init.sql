@@ -1,8 +1,8 @@
 INSERT INTO courier (phone, coordinates, status)
 VALUES
     ('+7XXXXXXXXX', POINT(32.0, 23.0), 'работает'),
-    ('+78XXXXXXXX', POINT(3.0, 2.0), 'завершон'),
-    ('+789XXXXXXX', POINT(0.0, 0.0), 'откланен');
+    ('+78XXXXXXXX', POINT(3.0, 2.0), 'завершен'),
+    ('+789XXXXXXX', POINT(0.0, 0.0), 'отклонен');
 
 INSERT INTO customer (phone, email, address)
 VALUES

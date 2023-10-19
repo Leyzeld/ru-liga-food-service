@@ -1,9 +1,8 @@
 package ru.liga.service.api;
 
-import ru.liga.dtoDelivery.DeliveryDto;
+import ru.liga.dto.DeliveryDto;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface DeliveryService {
     List<DeliveryDto>  deliveries();

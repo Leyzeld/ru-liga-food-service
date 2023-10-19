@@ -1,13 +1,13 @@
-package ru.liga.orderController;
+package ru.liga.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import ru.liga.orderDto.Dto;
-import ru.liga.orderDto.OrderDto;
-import ru.liga.orderDto.OrderRequest;
-import ru.liga.orderDto.OrderResponse;
+import ru.liga.dto.Dto;
+import ru.liga.dto.OrderDto;
+import ru.liga.dto.OrderRequest;
+import ru.liga.dto.OrderResponse;
 import ru.liga.service.api.OrderService;
 
 import java.util.Optional;

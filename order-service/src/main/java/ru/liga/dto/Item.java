@@ -1,4 +1,4 @@
-package ru.liga.itemDto;
+package ru.liga.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

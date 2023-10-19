@@ -1,9 +1,7 @@
-package ru.liga.orderDto;
+package ru.liga.dto;
 
-import liquibase.pro.packaged.O;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
