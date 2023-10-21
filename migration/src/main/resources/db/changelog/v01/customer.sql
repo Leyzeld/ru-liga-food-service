@@ -2,7 +2,7 @@ create sequence if not exists customer_seq;
 
 create table if not exists customer
 (
-    customer_id integer not null default nextval ('customer_seq'),
+    customer_id bigint not null default nextval ('customer_seq'),
     phone varchar(11) not null,
     email varchar(320) not null,
     address text not null,

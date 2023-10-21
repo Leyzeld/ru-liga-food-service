@@ -16,6 +16,12 @@ drop sequence if exists restaurant_seq;
 drop table if exists customer;
 drop sequence if exists customer_seq;
 
+drop table if exists databasechangeloglock;
+
+drop table if exists order_item;
+
+drop table if exists databasechangelog;
+
 
 
 

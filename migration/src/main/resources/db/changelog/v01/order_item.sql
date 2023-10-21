@@ -2,11 +2,11 @@ create sequence if not exists order_item_seq;
 
 create table if not exists order_item
 (
-    order_item_id integer not null default nextval ('order_item_seq'),
-    order_id integer,
-    restaurant_menu_item_id integer,
+    order_item_id bigint not null default nextval ('order_item_seq'),
+    order_id bigint,
+    restaurant_menu_item_id bigint,
     price numeric(10,2),
-    quantity integer not null,
+    quantity bigint not null,
     constraint order_item_pk primary key (order_item_id),
     constraint order_item_orders_fk foreign key (order_id)
         references orders (order_id),

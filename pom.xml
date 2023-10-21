@@ -22,6 +22,7 @@
 		<module>delivery-service</module>
 		<module>dependencies_bom</module>
 		<module>migration</module>
+		<module>common</module>
     </modules>
 
 

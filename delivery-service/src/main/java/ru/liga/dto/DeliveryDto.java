@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class DeliveryDto {
     @Schema(description = "Ид курьера")
-    private Integer id;
+    private Long id;
     @Schema(description = "Номер телефона")
     private String phone_number;
     @Schema(description = "Статус")

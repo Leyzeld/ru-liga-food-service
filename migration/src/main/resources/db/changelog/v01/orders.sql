@@ -2,11 +2,11 @@ create sequence if not exists order_seq;
 
 create table if not exists orders
 (
-    order_id integer not null default nextval ('order_seq'),
-    customer_id integer,
-    restaurant_id integer,
+    order_id bigint not null default nextval ('order_seq'),
+    customer_id bigint,
+    restaurant_id bigint,
     status varchar(128),
-    courier_id integer,
+    courier_id bigint,
     timestamp timestamptz not null default now(),
     constraint order_pk primary key (order_id),
     constraint order_customer_fk foreign key (customer_id)
