@@ -14,5 +14,6 @@ import java.util.List;
 public interface OrderItemRepository extends JpaRepository<OrderItemEntity, Long> {
     @Transactional
     @Modifying
-    OrderItemEntity findByOrderId(@Param("orderId") Long orderId);
+    @Query("SELECT i FROM OrderItemEntity i WHERE i.orderId.id = :orderId")
+    List<OrderItemEntity> findByOrderId(@Param("orderId") Long orderId);
 }

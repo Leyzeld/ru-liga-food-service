@@ -12,7 +12,7 @@ public class OrderMapper {
         order.setCustomerId(orderEntity.getCustomerEntity().getId());
         order.setRestaurantId(orderEntity.getRestaurantEntity().getRestId());
         order.setStatus(orderEntity.getStatus());
-        order.setCourierId(orderEntity.getCourierEntity().getId());
+        order.setCourierId(orderEntity.getCourierEntity().getCourierId());
         order.setTimestamp(orderEntity.getTimestamp());
         return order;
     }

@@ -9,8 +9,8 @@ public class RestaurantMapper {
     public Restaurant mappEntityToDto(RestaurantEntity restaurantEntity) {
         Restaurant restaurant = new Restaurant();
         restaurant.setRestaurant_id(restaurantEntity.getRestId());
-        restaurant.setStatus(restaurantEntity.getStatus());
         restaurant.setAddress(restaurantEntity.getAddress());
+        restaurant.setStatus(restaurantEntity.getStatus());
         return restaurant;
     }
 }

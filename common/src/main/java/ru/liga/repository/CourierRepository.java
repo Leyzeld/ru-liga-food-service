@@ -6,15 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.liga.model.RestaurantEntity;
+import ru.liga.model.CourierEntity;
 
-import java.math.BigDecimal;
 
 @Repository
-public interface RestaurantRepository extends JpaRepository<RestaurantEntity, Long> {
+public interface CourierRepository extends JpaRepository<CourierEntity, Long> {
     @Modifying
     @Transactional
-    @Query("UPDATE RestaurantEntity r SET r.status = :status WHERE r.restId = :id")
-    void updateStatus(@Param("id") Long id, @Param("status") String status);
-
+    @Query("UPDATE CourierEntity r SET r.status = :status WHERE r.CourierId = :id")
+    void updateStatusById(@Param("id") Long id, @Param("status") String status);
 }

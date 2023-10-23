@@ -4,8 +4,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import ru.liga.dto.DeliveryDto;
-import ru.liga.service.api.DeliveryService;
+import ru.liga.dto.Courier;
+import ru.liga.model.CourierEntity;
+import ru.liga.service.FaingService;
+import ru.liga.service.api.CourierService;
 
 import java.util.List;
 
@@ -14,36 +16,44 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping ("/courier")
+
 public class DeliveryController {
-    private final DeliveryService deliveryService;
+    private final CourierService courierService;
+    private final FaingService faingService;
 
     @Operation(summary = "Показать всех курьеров")
     @GetMapping("/all_couriers")
-    public List<DeliveryDto> deliveries() {
-        return deliveryService.deliveries();
+    public List<Courier> deliveries() {
+        return courierService.deliveries();
     }
     @Operation(summary = "Показать курьера по ID")
     @GetMapping("/one_courier/{id}")
-    public DeliveryDto getCourierById(@PathVariable("id") Integer id) {
-        return deliveryService.getCourierById(id);
+    public Courier getCourierById(@PathVariable("id") Long id) {
+        return courierService.getCourierById(id);
     }
 
     @Operation(summary = "Добавить курьера")
     @PostMapping("/addCourier")
-    public String addCourier(@RequestBody DeliveryDto newCourier) {
-        return deliveryService.addCourier(newCourier);
+    public String addCourier(@RequestBody Courier newCourier) {
+        return courierService.addCourier(newCourier);
     }
     @Operation(summary = "Изменить статус курьера")
     @PutMapping("/{id}/{status}")
-    public String updateCourierStatusPartially(@PathVariable("id") Integer id,
-                                               @PathVariable("status") String status) {
-        return deliveryService.updateCourierStatusPartially(id, status);
+    public String updateCourierStatusPartially(@RequestParam(name = "id") Long id,
+                                               @RequestParam(name = "status") String status) {
+        return courierService.updateCourierStatusPartially(id, status);
     }
 
     @Operation(summary = "Удалить курьера по ID")
     @DeleteMapping("/delete/{id}")
-    public String deleteCourierById(@PathVariable(value = "id", required = true) Integer id) {
-        return deliveryService.deleteCourierById(id);
+    public String deleteCourierById(@PathVariable(value = "id", required = true) Long id) {
+        return courierService.deleteCourierById(id);
+    }
+
+    @Operation(summary = "TestFeign")
+    @GetMapping("/{caseId}")
+    public CourierEntity getById(@RequestParam(name = "caseId") Long caseId) {
+        return FaingService.getCaseById(caseId);
     }
 
 }

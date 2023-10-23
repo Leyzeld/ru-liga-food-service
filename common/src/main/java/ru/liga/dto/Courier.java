@@ -1,17 +1,16 @@
 package ru.liga.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.awt.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Courier {
     private Long id;
     private String phone;
-    private Point coordinates;
+    private Float coordinates;
     private String status;
 }

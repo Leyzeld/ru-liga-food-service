@@ -1,8 +1,8 @@
 INSERT INTO courier (phone, coordinates, status)
 VALUES
-    ('+7XXXXXXXXX', POINT(32.0, 23.0), 'работает'),
-    ('+78XXXXXXXX', POINT(3.0, 2.0), 'завершен'),
-    ('+789XXXXXXX', POINT(0.0, 0.0), 'отклонен');
+    ('+7XXXXXXXXX', 32.0, 'работает'),
+    ('+78XXXXXXXX', 3.0, 'завершен'),
+    ('+789XXXXXXX', 0.0, 'отклонен');
 
 INSERT INTO customer (phone, email, address)
 VALUES
@@ -29,8 +29,8 @@ VALUES
     (3, 'Суп', 132.00, 'Вкусный супчик', 'pic3.png');
 
 -- Добавление тестовых данных в таблицу order_item
-INSERT INTO order_item (order_id, restaurant_menu_item_id, quantity)
+INSERT INTO order_item (order_id, restaurant_menu_item_id,price, quantity)
 VALUES
-    (1, 1, 1),
-    (2, 2, 2),
-    (3, 3, 3);
+    (1, 1, 5, 1),
+    (2, 2, 5, 2),
+    (3, 3, 5, 3);

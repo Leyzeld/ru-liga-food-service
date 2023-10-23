@@ -1,26 +1,24 @@
 package ru.liga.model;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.awt.*;
 
 @Entity
 @Table(name = "courier")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CourierEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "courier_id")
-    private Long id;
+    private Long CourierId;
     @Column(name = "phone")
     private String phone;
     @Column(name = "coordinates")
-    private Point coordinates;
+    private Float coordinates;
     @Column(name = "status")
     private String status;
 }
