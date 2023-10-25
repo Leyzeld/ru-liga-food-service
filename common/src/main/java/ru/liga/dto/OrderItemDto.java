@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderItem {
+public class OrderItemDto {
     private Long id;
     private Long order_id;
     private Long restaurant_menu_item_id;

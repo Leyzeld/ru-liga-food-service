@@ -1,21 +1,21 @@
 package ru.liga.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.liga.dto.Courier;
+import ru.liga.dto.CourierDto;
 import ru.liga.model.CourierEntity;
 
 @Component
 public class CourierMapper {
-    public Courier mappEntityToDto (CourierEntity entity) {
-        Courier courier = new Courier();
-        courier.setId(entity.getCourierId());
-        courier.setStatus(entity.getStatus());
-        courier.setCoordinates(entity.getCoordinates());
-        courier.setPhone(entity.getPhone());
-        return courier;
+    public CourierDto mappEntityToDto (CourierEntity entity) {
+        CourierDto courierDto = new CourierDto();
+        courierDto.setId(entity.getCourierId());
+        courierDto.setStatus(entity.getStatus());
+        courierDto.setCoordinates(entity.getCoordinates());
+        courierDto.setPhone(entity.getPhone());
+        return courierDto;
     }
 
-    public CourierEntity mappDtoToEntity (Courier dto) {
+    public CourierEntity mappDtoToEntity (CourierDto dto) {
         CourierEntity courier = new CourierEntity();
         courier.setCourierId(dto.getId());
         courier.setStatus(dto.getStatus());

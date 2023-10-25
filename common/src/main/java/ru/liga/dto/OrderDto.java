@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order {
+public class OrderDto {
     private Long id;
     private Long customerId;
     private Long restaurantId;

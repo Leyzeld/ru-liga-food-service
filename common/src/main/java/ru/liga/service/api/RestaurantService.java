@@ -1,8 +1,7 @@
 package ru.liga.service.api;
 
-import ru.liga.dto.Restaurant;
-import java.util.Optional;
+import ru.liga.dto.RestaurantDto;
 
 public interface RestaurantService {
-    public Restaurant getRestaurantById(Long id);
+    public RestaurantDto getRestaurantById(Long id);
 }

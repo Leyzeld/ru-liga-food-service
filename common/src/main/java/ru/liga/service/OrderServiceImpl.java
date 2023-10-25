@@ -1,9 +1,8 @@
 package ru.liga.service;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.liga.dto.Order;
+import ru.liga.dto.OrderDto;
 import ru.liga.mapper.OrderMapper;
 import ru.liga.model.OrderEntity;
 import ru.liga.repository.OrderRepository;
@@ -15,10 +14,10 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
     @Override
-    public Order getOrderById(Long id) {
-        Order order = orderMapper.
-                mappEntityToDto(orderRepository.findById(id).orElseThrow());
-        return order;
+    public OrderDto getOrderById(Long id) {
+        OrderDto orderDto = orderMapper.
+                mappEntityToDto(orderRepository.findById(id).orElseThrow(()->new RuntimeException(String.format("OrderDto с id = %s не найден!", id))));
+        return orderDto;
     }
 
     @Override

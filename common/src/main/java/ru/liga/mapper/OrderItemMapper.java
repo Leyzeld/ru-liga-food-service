@@ -1,18 +1,18 @@
 package ru.liga.mapper;
 
 import org.springframework.stereotype.Component;
-import ru.liga.dto.OrderItem;
+import ru.liga.dto.OrderItemDto;
 import ru.liga.model.OrderItemEntity;
 
 @Component
 public class OrderItemMapper {
-    public OrderItem mappEntityToDto (OrderItemEntity entity) {
-        OrderItem orderItem = new OrderItem();
-        orderItem.setId(entity.getId());
-        orderItem.setOrder_id(entity.getOrderId().getId());
-        orderItem.setRestaurant_menu_item_id(entity.getRestaurantMenuItemEntity().getRestMenuItemId());
-        orderItem.setPrice(entity.getPrice());
-        orderItem.setQuantity(entity.getQuantity());
-        return orderItem;
+    public OrderItemDto mappEntityToDto (OrderItemEntity entity) {
+        OrderItemDto orderItemDto = new OrderItemDto();
+        orderItemDto.setId(entity.getId());
+        orderItemDto.setOrder_id(entity.getOrderId().getId());
+        orderItemDto.setRestaurant_menu_item_id(entity.getRestaurantMenuItemEntity().getRestMenuItemId());
+        orderItemDto.setPrice(entity.getPrice());
+        orderItemDto.setQuantity(entity.getQuantity());
+        return orderItemDto;
     }
 }

@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import ru.liga.dto.Courier;
+import ru.liga.dto.CourierDto;
 import ru.liga.model.CourierEntity;
 import ru.liga.service.FaingService;
 import ru.liga.service.api.CourierService;
@@ -23,19 +23,19 @@ public class DeliveryController {
 
     @Operation(summary = "Показать всех курьеров")
     @GetMapping("/all_couriers")
-    public List<Courier> deliveries() {
+    public List<CourierDto> deliveries() {
         return courierService.deliveries();
     }
     @Operation(summary = "Показать курьера по ID")
     @GetMapping("/one_courier/{id}")
-    public Courier getCourierById(@PathVariable("id") Long id) {
+    public CourierDto getCourierById(@PathVariable("id") Long id) {
         return courierService.getCourierById(id);
     }
 
     @Operation(summary = "Добавить курьера")
     @PostMapping("/addCourier")
-    public String addCourier(@RequestBody Courier newCourier) {
-        return courierService.addCourier(newCourier);
+    public String addCourier(@RequestBody CourierDto newCourierDto) {
+        return courierService.addCourier(newCourierDto);
     }
     @Operation(summary = "Изменить статус курьера")
     @PutMapping("/{id}/{status}")

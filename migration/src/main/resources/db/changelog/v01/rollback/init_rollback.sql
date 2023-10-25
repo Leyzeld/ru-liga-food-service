@@ -4,13 +4,13 @@ drop sequence if exists order_item_seq;
 drop table if exists orders;
 drop sequence if exists order_seq;
 
-drop table if exists courier;
+drop table if exists courierDto;
 drop sequence if exists courier_seq;
 
 drop table if exists restaurant_menu_item;
 drop sequence if exists restaurant_menu_item_seq;
 
-drop table if exists restaurant;
+drop table if exists restaurantDto;
 drop sequence if exists restaurant_seq;
 
 drop table if exists customer;

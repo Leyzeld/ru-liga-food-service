@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestaurantMenuItem {
+public class RestaurantMenuItemDto {
     private Long restaurant_menu_item_id;
     private Long restaurant_id;
     private String name;

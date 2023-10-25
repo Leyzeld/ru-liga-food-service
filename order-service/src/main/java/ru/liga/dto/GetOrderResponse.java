@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class GetOrderResponse {
     private Long id;
-    private Restaurant restaurant;
+    private RestaurantDto restaurantDto;
     private Timestamp timestamp;
     private List<Item> items;
 

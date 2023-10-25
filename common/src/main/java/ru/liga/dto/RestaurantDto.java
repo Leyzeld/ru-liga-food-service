@@ -2,15 +2,12 @@ package ru.liga.dto;
 
 import lombok.*;
 
-import java.awt.*;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Courier {
-    private Long id;
-    private String phone;
-    private Float coordinates;
+public class RestaurantDto {
+    private Long restaurant_id;
+    private String address;
     private String status;
 }

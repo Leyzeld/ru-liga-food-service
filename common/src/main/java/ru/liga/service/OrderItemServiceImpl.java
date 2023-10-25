@@ -1,9 +1,8 @@
 package ru.liga.service;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.liga.dto.OrderItem;
+import ru.liga.dto.OrderItemDto;
 import ru.liga.mapper.OrderItemMapper;
 import ru.liga.model.OrderEntity;
 import ru.liga.model.OrderItemEntity;
@@ -19,12 +18,12 @@ public class OrderItemServiceImpl implements OrderItemService {
     private final OrderItemRepository orderItemRepository;
     private final OrderItemMapper orderItemMapper;
     @Override
-    public OrderItem getOrderItemById(Long id) {
-        OrderItem orderItem = orderItemMapper.
+    public OrderItemDto getOrderItemById(Long id) {
+        OrderItemDto orderItemDto = orderItemMapper.
                 mappEntityToDto(orderItemRepository.
                         findById(id).
-                        orElseThrow());
-        return orderItem;
+                        orElseThrow(()->new RuntimeException(String.format("OrderItemDto с id = %s не найден!", id))));
+        return orderItemDto;
     }
 
     @Override
@@ -41,7 +40,6 @@ public class OrderItemServiceImpl implements OrderItemService {
     public List<OrderItemEntity> findOrderItemByOrderId(Long id) {
         List<OrderItemEntity> orderItemEntities = new ArrayList<>();
         List<OrderItemEntity> all = orderItemRepository.findAll();
-        OrderEntity orderId = all.get(2).getOrderId();
         for(OrderItemEntity iter:all) {
             if(iter.getOrderId().getId().equals(id)) {
                 orderItemEntities.add(iter);

@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.liga.dto.RestaurantMenuItem;
+import ru.liga.dto.RestaurantMenuItemDto;
 import ru.liga.model.RestaurantMenuItemEntity;
 import ru.liga.service.api.RestaurantMenuItemsService;
 
@@ -20,7 +20,7 @@ public class MenuItemController {
 
     @Operation(summary = "Получить пункт меню по ID")
     @GetMapping("/{id}")
-    public ResponseEntity<RestaurantMenuItem>  getMenuItemById(@PathVariable("id") Long id) {
+    public ResponseEntity<RestaurantMenuItemDto>  getMenuItemById(@PathVariable("id") Long id) {
         return ResponseEntity.ok( restaurantMenuItemsService.getMenuItemById(id));
     }
     @Operation(summary = "Добавить пункт меню")

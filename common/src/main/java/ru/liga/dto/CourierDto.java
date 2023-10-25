@@ -6,9 +6,9 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Customer {
+public class CourierDto {
     private Long id;
     private String phone;
-    private String email;
-    private String address;
+    private Float coordinates;
+    private String status;
 }

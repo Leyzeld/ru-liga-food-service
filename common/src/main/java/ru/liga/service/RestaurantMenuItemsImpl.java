@@ -1,9 +1,8 @@
 package ru.liga.service;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.liga.dto.RestaurantMenuItem;
+import ru.liga.dto.RestaurantMenuItemDto;
 import ru.liga.mapper.RestaurantMenuItemMapper;
 import ru.liga.model.RestaurantMenuItemEntity;
 import ru.liga.repository.RestaurantMenuItemsRepository;
@@ -19,12 +18,12 @@ public class RestaurantMenuItemsImpl implements RestaurantMenuItemsService {
     private final RestaurantRepository restaurantRepository;
     private final RestaurantMenuItemMapper restaurantMenuItemMapper;
     @Override
-    public RestaurantMenuItem getMenuItemById(Long id) {
-        RestaurantMenuItem restaurantMenuItem = restaurantMenuItemMapper.
+    public RestaurantMenuItemDto getMenuItemById(Long id) {
+        RestaurantMenuItemDto restaurantMenuItemDto = restaurantMenuItemMapper.
                 mappEntityToDto(restaurantMenuItemsRepository.
                         findById(id).
-                        orElseThrow());
-        return restaurantMenuItem;
+                        orElseThrow(()->new RuntimeException(String.format("RestaurantMenuItemDto с id = %s не найден!", id))));
+        return restaurantMenuItemDto;
     }
 
     @Override
@@ -34,7 +33,7 @@ public class RestaurantMenuItemsImpl implements RestaurantMenuItemsService {
                         .findById(restaurantMenuItemEntity
                                 .getRestaurantEntity()
                                 .getRestId())
-                                .orElseThrow());
+                                .orElseThrow(()->new RuntimeException(String.format("Restaurant не найден!"))));
 
         restaurantMenuItemsRepository.save(restaurantMenuItemEntity);
     }

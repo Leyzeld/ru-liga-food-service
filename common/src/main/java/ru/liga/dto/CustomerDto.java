@@ -6,8 +6,9 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Restaurant {
-    private Long restaurant_id;
+public class CustomerDto {
+    private Long id;
+    private String phone;
+    private String email;
     private String address;
-    private String status;
 }

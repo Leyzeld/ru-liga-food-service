@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.liga.dto.OrderItem;
+import ru.liga.dto.OrderItemDto;
 import ru.liga.model.OrderItemEntity;
 import ru.liga.service.api.OrderItemService;
 
@@ -18,7 +18,7 @@ public class OrderItemController {
 
     @Operation(summary = "Получить товаром в заказе по ID")
     @GetMapping("/{id}")
-    public ResponseEntity<OrderItem> getMenuItemById(@PathVariable("id") Long id) {
+    public ResponseEntity<OrderItemDto> getMenuItemById(@PathVariable("id") Long id) {
         return ResponseEntity.ok( orderItemService.getOrderItemById(id));
     }
     @Operation(summary = "Добавить товар")

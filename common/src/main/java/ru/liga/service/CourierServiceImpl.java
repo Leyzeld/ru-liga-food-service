@@ -2,13 +2,12 @@ package ru.liga.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.liga.dto.Courier;
+import ru.liga.dto.CourierDto;
 import ru.liga.mapper.CourierMapper;
 import ru.liga.model.CourierEntity;
 import ru.liga.repository.CourierRepository;
 import ru.liga.service.api.CourierService;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,28 +17,28 @@ public class CourierServiceImpl implements CourierService {
     private final CourierRepository courierRepository;
     private final CourierMapper courierMapper;
     @Override
-    public List<Courier> deliveries() {
+    public List<CourierDto> deliveries() {
         List<CourierEntity> all = courierRepository.findAll();
-        List<Courier> courierList = new ArrayList<>();
+        List<CourierDto> courierDtoList = new ArrayList<>();
         for (int i = 0; i < all.size(); i++) {
-            courierList.add(courierMapper.mappEntityToDto(all.get(i)));
+            courierDtoList.add(courierMapper.mappEntityToDto(all.get(i)));
         }
-        return courierList;
+        return courierDtoList;
     }
 
     @Override
-    public Courier getCourierById(Long id) {
-        Courier courier = courierMapper
+    public CourierDto getCourierById(Long id) {
+        CourierDto courierDto = courierMapper
                 .mappEntityToDto(courierRepository
                         .findById(id)
                         .orElseThrow());
-        return courier;
+        return courierDto;
 
     }
 
     @Override
-    public String addCourier(Courier newCourier) {
-        courierRepository.save(courierMapper.mappDtoToEntity(newCourier));
+    public String addCourier(CourierDto newCourierDto) {
+        courierRepository.save(courierMapper.mappDtoToEntity(newCourierDto));
         return "курьер добавлен";
     }
 
