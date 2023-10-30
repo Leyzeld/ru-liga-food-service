@@ -2,12 +2,15 @@ package ru.liga.service;
 
 import lombok.Data;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.liga.dto.*;;
+import ru.liga.mapper.OrderMapper;
 import ru.liga.mapper.RestaurantMapper;
 import ru.liga.model.OrderEntity;
 import ru.liga.model.OrderItemEntity;
+import ru.liga.model.RestaurantEntity;
 import ru.liga.repository.*;
-import ru.liga.service.api.GetOrderService;
+import ru.liga.service.api.OrderViewService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,68 +23,34 @@ import java.util.List;
  */
 @Service
 @Data
-public class GetOrderServiceImpl implements GetOrderService {
+public class OrderViewViewServiceImpl implements OrderViewService {
     private final RestaurantRepository restaurantRepository;
     private final RestaurantMenuItemsRepository restaurantMenuItemsRepository;
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
     private final RestaurantMapper restaurantMapper;
     private final CustomerRepository customerRepository;
+    private final OrderMapper orderMapper;
 
 
 
     @Override
-    public List<GetOrderResponse> getAllOrders() {
-        List<GetOrderResponse> getOrderResponseList = new ArrayList<>();
+    public List<OrderViewResponse> getAllOrders() {
+        List<OrderViewResponse> orderViewResponseList = new ArrayList<>();
         List<OrderEntity> all = orderRepository.findAll();
         for(long i = 0; i < all.size(); i++) {
-            getOrderResponseList.add(getOrderById(i+1));
+            orderViewResponseList.add(getOrderById(i+1));
         }
-        return getOrderResponseList;
+        return orderViewResponseList;
     }
 
     @Override
-    public GetOrderResponse getOrderById(Long id) {
-        GetOrderResponse getOrderResponse = new GetOrderResponse();
-        OrderEntity orderEntity = orderRepository.findById(id).orElseThrow();
-        getOrderResponse.setId(orderEntity.getId());
-        getOrderResponse.setRestaurantDto(restaurantMapper
-                .mappEntityToDto(restaurantRepository
-                        .findById(orderEntity
-                                .getRestaurantEntity()
-                                .getRestId())
-                        .orElseThrow(()->new RuntimeException(String.format("Restaurant с id = %s не найден!", orderEntity
-                                .getRestaurantEntity()
-                                .getRestId())))));
-        getOrderResponse.setTimestamp(orderEntity.getTimestamp());
-        List<OrderItemEntity> all = orderItemRepository.findAll();
-        List<Item> Items = new ArrayList<>();
-        for(OrderItemEntity iter:all) {
-            if(iter.getOrderId().getId().equals(id)) {
-                Item newItem = new Item();
-                newItem.setQuantity(iter.getQuantity());
-                newItem.setPrice(restaurantMenuItemsRepository
-                        .findById(iter
-                                .getRestaurantMenuItemEntity()
-                                .getRestMenuItemId())
-                        .get()
-                        .getPrice());
-                newItem.setDescription(restaurantMenuItemsRepository
-                        .findById(iter.getRestaurantMenuItemEntity()
-                                .getRestMenuItemId())
-                        .get()
-                        .getDescription());
-                newItem.setImage(restaurantMenuItemsRepository
-                        .findById(iter
-                                .getRestaurantMenuItemEntity()
-                                .getRestMenuItemId())
-                        .get()
-                        .getImage());
-                Items.add(newItem);
-            }
-        }
-        getOrderResponse.setItems(Items);
-        return getOrderResponse;
+    public OrderViewResponse getOrderById(Long id) {
+        OrderEntity orderEntity = orderRepository
+                .findById(id)
+                .orElseThrow(()->new RuntimeException(String.format("OrderEntity с id = %s не найден!", id)));
+        return orderMapper.toViewResponse(orderEntity);
+
     }
 
     @Override
@@ -98,7 +67,7 @@ public class GetOrderServiceImpl implements GetOrderService {
         orderEntity.setCustomerEntity(customerRepository
                 .findById(id)
                 .orElseThrow(()->new RuntimeException(String.format("CustomerEntity с id = %s не найден!", id))));
-        orderEntity.setStatus("Заказ создан и ожидает доставки");
+        orderEntity.setStatus("Заказ создан и ожидает курьера");
         Date currentDate = new Date();
         Timestamp timestamp = new Timestamp(currentDate.getTime());
         orderEntity.setTimestamp(timestamp);

@@ -38,13 +38,6 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     @Override
     public List<OrderItemEntity> findOrderItemByOrderId(Long id) {
-        List<OrderItemEntity> orderItemEntities = new ArrayList<>();
-        List<OrderItemEntity> all = orderItemRepository.findAll();
-        for(OrderItemEntity iter:all) {
-            if(iter.getOrderId().getId().equals(id)) {
-                orderItemEntities.add(iter);
-            }
-        }
-        return orderItemEntities;
+        return orderItemRepository.findByOrderId(id);
     }
 }

@@ -6,11 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import ru.liga.dto.GetOrderResponse;
+import ru.liga.dto.OrderViewResponse;
 
 import ru.liga.dto.OrderRequest;
 
-import ru.liga.service.api.GetOrderService;
+import ru.liga.service.api.OrderViewService;
 
 import java.util.List;
 
@@ -19,23 +19,23 @@ import java.util.List;
 @RequestMapping("/order")
 @RequiredArgsConstructor
 public class OrderController {
-    private final GetOrderService getOrderService;
+    private final OrderViewService orderViewService;
 
     @Operation(summary = "Получить заказ по ID")
     @GetMapping("/{id}")
-    public ResponseEntity<GetOrderResponse> getOrderById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok( getOrderService.getOrderById(id));
+    public ResponseEntity<OrderViewResponse> getOrderById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok( orderViewService.getOrderById(id));
     }
     @Operation(summary = "Получить все заказы")
     @GetMapping("/all")
-    public ResponseEntity<List<GetOrderResponse>> getAllOrders() {
-        return ResponseEntity.ok( getOrderService.getAllOrders());
+    public ResponseEntity<List<OrderViewResponse>> getAllOrders() {
+        return ResponseEntity.ok( orderViewService.getAllOrders());
     }
     @Operation(summary = "Добавить заказ")
     @PostMapping("/add")
     public void addMenuItem(@RequestBody OrderRequest orderRequest,
                             @RequestParam ("Customer id") Long id) {
-        getOrderService.addOrder(orderRequest, id);
+        orderViewService.addOrder(orderRequest, id);
     }
 
 }

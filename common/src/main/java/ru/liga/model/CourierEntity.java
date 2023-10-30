@@ -2,7 +2,6 @@ package ru.liga.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.awt.*;
 
 @Entity
 @Table(name = "courier")
@@ -14,7 +13,7 @@ public class CourierEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "courier_id")
-    private Long CourierId;
+    private Long courierId;
     @Column(name = "phone")
     private String phone;
     @Column(name = "coordinates")

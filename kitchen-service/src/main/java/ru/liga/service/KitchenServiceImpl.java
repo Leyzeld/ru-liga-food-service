@@ -2,17 +2,17 @@ package ru.liga.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.liga.feign.CoreFeign;
+import ru.liga.feign.DeliveryFeignClient;
+import ru.liga.model.CourierEntity;
 import ru.liga.service.api.KitchenService;
 
 @Service
 @RequiredArgsConstructor
 public class KitchenServiceImpl implements KitchenService {
 
-    private final CoreFeign feign;
+    private final DeliveryFeignClient feign;
     @Override
-    public String testFeign() {
-        feign.getData(1L);
-        return "OK";
+    public CourierEntity testFeign() {
+        return feign.getData(1L);
     }
 }

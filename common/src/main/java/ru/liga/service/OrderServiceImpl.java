@@ -8,6 +8,8 @@ import ru.liga.model.OrderEntity;
 import ru.liga.repository.OrderRepository;
 import ru.liga.service.api.OrderService;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
@@ -23,5 +25,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void setOrder(OrderEntity orderEntity) {
         orderRepository.save(orderEntity);
+    }
+
+    @Override
+    public List<OrderEntity> getOrderByStatus(String status) {
+        return orderRepository.findByStatus(status);
     }
 }

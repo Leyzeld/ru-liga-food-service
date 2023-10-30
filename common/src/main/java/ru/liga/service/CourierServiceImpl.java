@@ -18,11 +18,8 @@ public class CourierServiceImpl implements CourierService {
     private final CourierMapper courierMapper;
     @Override
     public List<CourierDto> deliveries() {
-        List<CourierEntity> all = courierRepository.findAll();
-        List<CourierDto> courierDtoList = new ArrayList<>();
-        for (int i = 0; i < all.size(); i++) {
-            courierDtoList.add(courierMapper.mappEntityToDto(all.get(i)));
-        }
+        List<CourierDto> courierDtoList = courierMapper
+                .mappListEntityToDto(courierRepository.findAll());
         return courierDtoList;
     }
 

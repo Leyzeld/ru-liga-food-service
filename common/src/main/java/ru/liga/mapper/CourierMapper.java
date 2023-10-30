@@ -4,6 +4,9 @@ import org.springframework.stereotype.Component;
 import ru.liga.dto.CourierDto;
 import ru.liga.model.CourierEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class CourierMapper {
     public CourierDto mappEntityToDto (CourierEntity entity) {
@@ -22,5 +25,12 @@ public class CourierMapper {
         courier.setCoordinates(dto.getCoordinates());
         courier.setPhone(dto.getPhone());
         return courier;
+    }
+    public List<CourierDto> mappListEntityToDto (List<CourierEntity> entity) {
+        List<CourierDto> courierDtoList = new ArrayList<>();
+        for (CourierEntity courierEntity : entity) {
+            courierDtoList.add(mappEntityToDto(courierEntity));
+        }
+        return courierDtoList;
     }
 }

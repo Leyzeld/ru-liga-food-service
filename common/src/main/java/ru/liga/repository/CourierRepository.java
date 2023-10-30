@@ -13,6 +13,6 @@ import ru.liga.model.CourierEntity;
 public interface CourierRepository extends JpaRepository<CourierEntity, Long> {
     @Modifying
     @Transactional
-    @Query("UPDATE CourierEntity r SET r.status = :status WHERE r.CourierId = :id")
+    @Query("UPDATE CourierEntity r SET r.status = :status WHERE r.courierId = :id")
     void updateStatusById(@Param("id") Long id, @Param("status") String status);
 }

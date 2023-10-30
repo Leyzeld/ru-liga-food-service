@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MessageModel {
-    private String message;
+public class MessageEntity {
+    private Long orderIdWithoutCourier;
     private String routingKey;
 }

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
-
+    public static final String QUEUECOURIER = "queue1";
     @Bean
     public ConnectionFactory connectionFactory() {
         return new CachingConnectionFactory("localhost");
@@ -28,7 +28,7 @@ public class RabbitConfig {
 
     @Bean
     public Queue myQueue() {
-        return new Queue("queue1");
+        return new Queue(QUEUECOURIER);
     }
 
     @Bean

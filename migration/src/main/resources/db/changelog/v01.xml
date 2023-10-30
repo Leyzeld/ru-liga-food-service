@@ -6,9 +6,9 @@
     <!-- локальный ченджлог  -->
     <changeSet id="2023-10-13 00:00:00" author="layzeld">
         <!-- relativeToChangelogFile - позволяет указывать путь относительно той папки, где лежит ченджлог  -->
-        <sqlFile path="v01/courierDto.sql" relativeToChangelogFile="true"/>
+        <sqlFile path="v01/courier.sql" relativeToChangelogFile="true"/>
         <sqlFile path="v01/customer.sql" relativeToChangelogFile="true"/>
-        <sqlFile path="v01/restaurantDto.sql" relativeToChangelogFile="true"/>
+        <sqlFile path="v01/restaurant.sql" relativeToChangelogFile="true"/>
         <sqlFile path="v01/restaurant_menu_item.sql" relativeToChangelogFile="true"/>
         <sqlFile path="v01/orders.sql" relativeToChangelogFile="true"/>
         <sqlFile path="v01/order_item.sql" relativeToChangelogFile="true"/>

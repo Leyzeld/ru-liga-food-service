@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetOrderResponse {
+public class OrderViewResponse {
     private Long id;
     private RestaurantDto restaurantDto;
     private Timestamp timestamp;

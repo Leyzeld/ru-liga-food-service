@@ -16,17 +16,14 @@ public class OrderItemEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_id")
     private Long id;
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "order_id")
-    @ToString.Exclude
     private OrderEntity orderId;
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(optional = false)
     @JoinColumn(name = "restaurant_menu_item_id")
-    @ToString.Exclude
     private RestaurantMenuItemEntity restaurantMenuItemEntity;
     @Column(name = "price")
     private BigDecimal price;
     @Column(name = "quantity")
     private Long quantity;
-
 }
