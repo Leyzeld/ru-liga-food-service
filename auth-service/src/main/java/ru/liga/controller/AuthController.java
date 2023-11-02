@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.liga.dto.RegDto;
-import ru.liga.service.UserService;
+import ru.liga.service.api.UserService;
 
 @RestController
 @AllArgsConstructor

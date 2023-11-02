@@ -12,6 +12,9 @@ import java.util.List;
 public class OrderItemMapper {
     public OrderItemDto mappEntityToDto (OrderItemEntity entity) {
         OrderItemDto orderItemDto = new OrderItemDto();
+        if (entity == null) {
+            return orderItemDto;
+        }
         orderItemDto.setId(entity.getId());
         orderItemDto.setOrder_id(entity.getOrderId().getId());
         orderItemDto.setRestaurant_menu_item_id(entity.getRestaurantMenuItemEntity().getRestMenuItemId());
@@ -21,6 +24,9 @@ public class OrderItemMapper {
     }
     public Item toItemDto (OrderItemEntity entity) {
         Item item = new Item();
+        if (entity == null) {
+            return item;
+        }
         item.setPrice(entity.getPrice());
         item.setQuantity(entity.getQuantity());
         item.setDescription(entity.getRestaurantMenuItemEntity().getDescription());

@@ -2,13 +2,10 @@ package ru.liga.service;
 
 import lombok.Data;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.liga.dto.*;;
 import ru.liga.mapper.OrderMapper;
-import ru.liga.mapper.RestaurantMapper;
 import ru.liga.model.OrderEntity;
 import ru.liga.model.OrderItemEntity;
-import ru.liga.model.RestaurantEntity;
 import ru.liga.repository.*;
 import ru.liga.service.api.OrderViewService;
 
@@ -23,12 +20,11 @@ import java.util.List;
  */
 @Service
 @Data
-public class OrderViewViewServiceImpl implements OrderViewService {
+public class OrderViewServiceImpl implements OrderViewService {
     private final RestaurantRepository restaurantRepository;
     private final RestaurantMenuItemsRepository restaurantMenuItemsRepository;
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
-    private final RestaurantMapper restaurantMapper;
     private final CustomerRepository customerRepository;
     private final OrderMapper orderMapper;
 
@@ -36,11 +32,8 @@ public class OrderViewViewServiceImpl implements OrderViewService {
 
     @Override
     public List<OrderViewResponse> getAllOrders() {
-        List<OrderViewResponse> orderViewResponseList = new ArrayList<>();
         List<OrderEntity> all = orderRepository.findAll();
-        for(long i = 0; i < all.size(); i++) {
-            orderViewResponseList.add(getOrderById(i+1));
-        }
+        List<OrderViewResponse> orderViewResponseList = orderMapper.toViewResponseList(all);
         return orderViewResponseList;
     }
 

@@ -6,6 +6,9 @@ import ru.liga.dto.OrderDto;
 import ru.liga.dto.OrderViewResponse;
 import ru.liga.model.OrderEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class OrderMapper {
@@ -33,5 +36,12 @@ public class OrderMapper {
                 .mappEntityToDto(orderEntity
                         .getRestaurantEntity()));
         return orderViewResponse;
+    }
+    public List<OrderViewResponse> toViewResponseList(List<OrderEntity> orders) {
+        List<OrderViewResponse> orderViewResponseList = new ArrayList<>();
+        for(int i = 0; i < orders.size(); i++) {
+            orderViewResponseList.add(toViewResponse(orders.get(i+1)));
+        }
+        return orderViewResponseList;
     }
 }

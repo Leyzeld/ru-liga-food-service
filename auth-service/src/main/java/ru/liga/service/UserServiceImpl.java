@@ -11,18 +11,19 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.stereotype.Service;
 import ru.liga.dto.RegDto;
 import ru.liga.model.CustomUserDetails;
+import ru.liga.service.api.UserService;
 
 import java.util.Collections;
 
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
 
     private final UserDetailsService userDetailsService;
 
     @Qualifier("defaultPasswordEncoder")
     private final PasswordEncoder defaultPasswordEncoder;
 
-    public UserService(UserDetailsService userDetailsService, PasswordEncoder defaultPasswordEncoder) {
+    public UserServiceImpl(UserDetailsService userDetailsService, PasswordEncoder defaultPasswordEncoder) {
         this.userDetailsService = userDetailsService;
         this.defaultPasswordEncoder = defaultPasswordEncoder;
     }
