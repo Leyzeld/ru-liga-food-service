@@ -12,7 +12,7 @@
 
 <h3>Пользовательский тестовй сценарий запуска</h3>
 -Клонировать проект<br>
--Открыть терминал в IntelliJ IDEA и прописать ```cd migration```, далее ```mvn -Plocal liquibase:update``` таким образом все необходимые таблицы для работы будут созданы и заполнены автоматически<br>
+-Открыть терминал в IntelliJ IDEA и прописать `cd migration`, далее `mvn -Plocal liquibase:update` таким образом все необходимые таблицы для работы будут созданы и заполнены автоматически<br>
 -Запустить Rabbit в Docker <b>docker run -lt --rm --name rabbitmq -p 5672:5672
   -p 15672:15672 rabbitmq:3-management</b><br>
 -Запустить в такой последовательности <b>order-service</b>, <b>delivery-service</b>, <b>kitchen-service</b>, <b>notification-service</b><br>. Таким образом при запуске автоматически будут созданы требуемые очереди
