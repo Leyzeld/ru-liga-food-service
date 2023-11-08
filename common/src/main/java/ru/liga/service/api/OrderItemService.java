@@ -4,6 +4,7 @@ import ru.liga.dto.OrderItemDto;
 import ru.liga.model.OrderItemEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface OrderItemService {
 

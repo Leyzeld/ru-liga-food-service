@@ -19,7 +19,7 @@ public class OrderMapper {
         orderDto.setId(orderEntity.getId());
         orderDto.setCustomerId(orderEntity.getCustomerEntity().getId());
         orderDto.setRestaurantId(orderEntity.getRestaurantEntity().getRestId());
-        orderDto.setStatus(orderEntity.getStatus());
+        orderDto.setStatus(orderEntity.getStatus().toString());
         orderDto.setCourierId(orderEntity.getCourierEntity().getCourierId());
         orderDto.setTimestamp(orderEntity.getTimestamp());
         return orderDto;
@@ -40,7 +40,7 @@ public class OrderMapper {
     public List<OrderViewResponse> toViewResponseList(List<OrderEntity> orders) {
         List<OrderViewResponse> orderViewResponseList = new ArrayList<>();
         for(int i = 0; i < orders.size(); i++) {
-            orderViewResponseList.add(toViewResponse(orders.get(i+1)));
+            orderViewResponseList.add(toViewResponse(orders.get(i)));
         }
         return orderViewResponseList;
     }

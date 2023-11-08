@@ -10,14 +10,20 @@ import ru.liga.model.CourierEntity;
 import ru.liga.model.OrderEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
+public interface OrderRepository extends JpaRepository<OrderEntity, UUID> {
     @Query("SELECT o FROM OrderEntity o WHERE o.status = :status")
     List<OrderEntity> findByStatus(@Param("status") String status);
 
     @Modifying
     @Transactional
     @Query("UPDATE OrderEntity o SET o.courierEntity = :courier WHERE o.id = :id")
-    void updateCourierEntity(@Param("id") Long id, @Param("courier") CourierEntity courier);
+    void updateCourierEntity(@Param("id") UUID id, @Param("courier") CourierEntity courier);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE OrderEntity o SET o.status = :status WHERE o.id = :id")
+    void updateStatus(@Param("id") UUID id, @Param("status") String status);
 }

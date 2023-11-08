@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.liga.model.OrderItemEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public interface OrderItemRepository extends JpaRepository<OrderItemEntity, Long> {

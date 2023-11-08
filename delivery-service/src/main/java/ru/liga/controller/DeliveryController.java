@@ -3,57 +3,49 @@ package ru.liga.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.liga.dto.CourierDto;
-import ru.liga.model.CourierEntity;
-import ru.liga.service.FaingService;
-import ru.liga.service.api.CourierService;
+import ru.liga.model.OrderEntity;
+import ru.liga.service.api.DeliveryService;
+import ru.liga.service.api.OrderService;
+import ru.liga.status.OrderStatus;
 
 import java.util.List;
+import java.util.UUID;
 
 
-@Tag(name = "API для службы доставки")
+@Tag(name = "API для службы доставки",
+        description = "В данном REST контроллере описаны методы для работы курьеров с готовыми заказами")
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping ("/courier")
-
 public class DeliveryController {
-    private final CourierService courierService;
-    private final FaingService faingService;
-
-    @Operation(summary = "Показать всех курьеров")
-    @GetMapping("/all_couriers")
-    public List<CourierDto> deliveries() {
-        return courierService.deliveries();
+    private final OrderService orderService;
+    private final DeliveryService deliveryService;
+    @Operation(summary = "поиск доступных заказов",
+            description = "Метод который позволяет получить все заказы со статусом ожидают курьера")
+    @GetMapping
+    public ResponseEntity<List<OrderEntity>> findAvailableDeliveries() {
+        log.info("Поулчен GET запрос для поиска доступных заказов");
+        return ResponseEntity.ok(orderService.getOrderByStatus(OrderStatus.WAITING_FOR_COURIER.getStatus()));
     }
-    @Operation(summary = "Показать курьера по ID")
-    @GetMapping("/one_courier/{id}")
-    public CourierDto getCourierById(@PathVariable("id") Long id) {
-        return courierService.getCourierById(id);
+    @Operation(summary = "забрать заказ",
+            description = "Метод который позволяет курьеру забрать заказ для доставки и так же обновляет статус заказа"+
+            " и так же меняет статус заказа на доставляется")
+    @PostMapping("/take/{orderId}")
+    public void takeOrder(@RequestParam ("Courier id") Long courierId,
+                          @RequestParam ("Order id") UUID orderId) {
+        log.info("Получен POST запрос для получения заказа id = {} курьером", orderId);
+        orderService.setCourier(courierId, orderId);
     }
-
-    @Operation(summary = "Добавить курьера")
-    @PostMapping("/addCourier")
-    public String addCourier(@RequestBody CourierDto newCourierDto) {
-        return courierService.addCourier(newCourierDto);
-    }
-    @Operation(summary = "Изменить статус курьера")
-    @PutMapping("/{id}/{status}")
-    public String updateCourierStatusPartially(@RequestParam(name = "id") Long id,
-                                               @RequestParam(name = "status") String status) {
-        return courierService.updateCourierStatusPartially(id, status);
-    }
-
-    @Operation(summary = "Удалить курьера по ID")
-    @DeleteMapping("/delete/{id}")
-    public String deleteCourierById(@PathVariable(value = "id", required = true) Long id) {
-        return courierService.deleteCourierById(id);
-    }
-
-    @Operation(summary = "TestFeign")
-    @GetMapping("/{caseId}")
-    public CourierEntity getById(@RequestParam(name = "caseId") Long caseId) {
-        return FaingService.getCaseById(caseId);
+    @Operation(summary = "отдать заказ",
+            description = "Метод который позволяет курьеру отдать заказ клиенту и так же меняет его статус")
+    @PostMapping("/complete/{orderId}")
+    public void completeOrder(@PathVariable UUID orderId) {
+        log.info("Получен POST запрос для получения заказа id = {} клиентом", orderId);
+        deliveryService.completeOrder(orderId);
     }
 
 }

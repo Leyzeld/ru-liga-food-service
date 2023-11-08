@@ -5,6 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <!-- локальный ченджлог  -->
     <changeSet id="2023-10-13 00:00:00" author="layzeld">
+        <comment>Создание таблиц аутентификации</comment>
         <sqlFile path="auth/auth.sql" relativeToChangelogFile="true"/>
     </changeSet>
 

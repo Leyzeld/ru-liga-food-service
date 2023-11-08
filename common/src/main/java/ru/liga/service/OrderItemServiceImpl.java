@@ -11,6 +11,7 @@ import ru.liga.service.api.OrderItemService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

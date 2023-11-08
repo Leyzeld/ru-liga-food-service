@@ -13,7 +13,7 @@ public class RestaurantMapper {
         }
         restaurantDto.setRestaurant_id(restaurantEntity.getRestId());
         restaurantDto.setAddress(restaurantEntity.getAddress());
-        restaurantDto.setStatus(restaurantEntity.getStatus());
+        restaurantDto.setStatus(restaurantEntity.getStatus().toString());
         return restaurantDto;
     }
 }

@@ -1,8 +1,8 @@
 create sequence if not exists order_seq;
-
+create extension if not exists "uuid-ossp";
 create table if not exists orders
 (
-    order_id bigint not null default nextval ('order_seq'),
+    order_id uuid not null default uuid_generate_v4(),
     customer_id bigint,
     restaurant_id bigint,
     status varchar(128),

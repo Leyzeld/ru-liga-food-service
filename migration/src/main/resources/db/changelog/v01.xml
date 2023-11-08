@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
     <!-- локальный ченджлог  -->
     <changeSet id="2023-10-13 00:00:00" author="layzeld">
-        <!-- relativeToChangelogFile - позволяет указывать путь относительно той папки, где лежит ченджлог  -->
+        <comment>Создание и заполнение основной структуры таблиц</comment>
         <sqlFile path="v01/courier.sql" relativeToChangelogFile="true"/>
         <sqlFile path="v01/customer.sql" relativeToChangelogFile="true"/>
         <sqlFile path="v01/restaurant.sql" relativeToChangelogFile="true"/>
