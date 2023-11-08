@@ -1,14 +1,15 @@
-<h1>Проект по доставке еды для Лиги Цифровой Экономики</h1>
-Сервис состоит из 7 модулей:
+#Проект по доставке еды для Лиги Цифровой Экономики
+<br>
+##Сервис состоит из 7 модулей:
 <br>
 
-- Dependencies Bom
-- Common
-- Migration
-- Order Service
-- Kitchen Service
-- Delivery Service
-- Notification Service
+- dependencies-bom - содержит в себе все зависимости и их версии
+- common - общие модули и dto
+- migration - миграция БД
+- order-service - работа с заказами от клиентов
+- kitchen-service - обработка заказов на кухне
+- delivery-service - обработка заказов для доставки
+- notification-service - передача информации между сервисами через RabbitMQ
 
 <h3>Пользовательский тестовй сценарий запуска</h3>
 -Клонировать проект<br>
